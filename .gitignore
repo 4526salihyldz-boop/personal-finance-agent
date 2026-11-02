@@ -1,0 +1,23 @@
+# Ortam Değişkenleri (BUNU ASLA SİLME)
+.env
+.env.local
+
+# Python Cache Dosyaları
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Sanal Ortamlar (Virtual Environments)
+venv/
+env/
+.venv/
+
+# Streamlit Local Secrets
+.streamlit/secrets.toml
+
+# IDE ve İşletim Sistemi Dosyaları
+.vscode/
+.idea/
+.DS_Store
+*.log
