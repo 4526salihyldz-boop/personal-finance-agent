@@ -92,7 +92,15 @@ def analyze_budget(user_question: str, user_id: str) -> Dict[str, Any]:
         if not query_data:
             final_message = "Bu kriterlere uygun bir harcama kaydı bulamadım."
         else:
-            final_message = f"Veritabanı Analizi: {sql_result.explanation}\nBulunan Veri: {query_data}"
+            # Gelen çiğ veriyi okunabilir bir listeye dönüştürüyoruz
+            formatted_results = []
+            for row in query_data:
+                amount = float(row.get('amount', 0))
+                desc = row.get('description', 'Belirtilmedi')
+                formatted_results.append(f"- {desc}: {amount} TL")
+            
+            items_str = "\n".join(formatted_results)
+            final_message = f"{sql_result.explanation}\n\n**Bulunan Kayıtlar:**\n{items_str}"
             
         return {
             "status": "success",
